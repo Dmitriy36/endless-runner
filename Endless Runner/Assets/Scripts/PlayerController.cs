@@ -6,6 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     Animator anim;
     public static GameObject player;
+    public static GameObject currentPlatform;
+
+    private void OnCollisionEnter(Collision other)
+    {
+        currentPlatform = other.gameObject;
+    }
 
     void Start()
     {

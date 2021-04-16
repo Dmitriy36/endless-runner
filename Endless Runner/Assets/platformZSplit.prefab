@@ -1109,6 +1109,8 @@ GameObject:
   - component: {fileID: 6286332842816350592}
   - component: {fileID: -7362425919482734721}
   - component: {fileID: 1711692054578844554}
+  - component: {fileID: 144539550510419600}
+  - component: {fileID: -8104687393860482281}
   m_Layer: 0
   m_Name: platformZSplit
   m_TagString: platformZSplit
@@ -1191,6 +1193,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34fd76b85434a1743b78c1989f026f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &144539550510419600
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286332842806991446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.99, y: 1, z: 1}
+  m_Center: {x: 0, y: 1.01, z: -4.49}
+--- !u!114 &-8104687393860482281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286332842806991446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd0378756fec624b929eecc32a3beae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6286332842806991448

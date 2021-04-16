@@ -277,6 +277,9 @@ GameObject:
   - component: {fileID: 9152812347020893418}
   - component: {fileID: -8902427577659047948}
   - component: {fileID: 6620754151816675313}
+  - component: {fileID: 5127525080117860378}
+  - component: {fileID: 8994175743236619597}
+  - component: {fileID: 2688967790688446895}
   m_Layer: 0
   m_Name: platformTSection
   m_TagString: platformTSection
@@ -348,6 +351,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34fd76b85434a1743b78c1989f026f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &5127525080117860378
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152812347011378990}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 5}
+  m_Center: {x: 3.6, y: 1.04, z: 0}
+--- !u!65 &8994175743236619597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152812347011378990}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 5}
+  m_Center: {x: -3.6, y: 1.04, z: 0}
+--- !u!114 &2688967790688446895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152812347011378990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd0378756fec624b929eecc32a3beae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9152812347011378992
