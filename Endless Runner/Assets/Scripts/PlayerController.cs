@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Animator anim;
+    public static GameObject player;
 
     void Start()
     {
         anim = this.GetComponent<Animator>();
+        player = this.gameObject;
     }
 
     void StopJump()
