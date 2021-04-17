@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         magic.transform.position = magicStartPos.position;
         magic.SetActive(true);
-        mRb.AddForce(this.transform.forward * 20000);
+        mRb.AddForce(this.transform.forward * 80000);
 
         Invoke("KillMagic", 1.0f);
     }
