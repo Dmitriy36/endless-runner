@@ -9,15 +9,23 @@ public class PlayerController : MonoBehaviour
     public static GameObject currentPlatform;
     bool canTurn = false;
     Vector3 startPosition;
+    public static bool isDead = false;
+    Rigidbody rb;
 
     private void OnCollisionEnter(Collision other)
-    {
+    {     
+        if(other.gameObject.tag == "Fire")
+        {
+            anim.SetTrigger("isDead");
+            isDead = true;
+        } else
         currentPlatform = other.gameObject;
     }
 
     void Start()
     {
         anim = this.GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody>();
         player = this.gameObject;
         startPosition = player.transform.position;
 
@@ -56,9 +64,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        if (isDead) return;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("isJumping", true);
+            rb.AddForce(Vector3.up * 200);
         }
 
         else if (Input.GetKeyDown(KeyCode.M))
