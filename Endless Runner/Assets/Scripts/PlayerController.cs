@@ -12,13 +12,17 @@ public class PlayerController : MonoBehaviour
     public static bool isDead = false;
     Rigidbody rb;
 
+    public GameObject magic;
+    public Transform magicStartPos;
+    Rigidbody mRb;
+
     private void OnCollisionEnter(Collision other)
     {     
-        if(other.gameObject.tag == "Fire")
+        if(other.gameObject.tag == "Fire" || other.gameObject.tag == "Wall")
         {
             anim.SetTrigger("isDead");
             isDead = true;
-        } else
+        } else 
         currentPlatform = other.gameObject;
     }
 
@@ -26,10 +30,26 @@ public class PlayerController : MonoBehaviour
     {
         anim = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
+        mRb = magic.GetComponent<Rigidbody>();
+
         player = this.gameObject;
         startPosition = player.transform.position;
 
         GenerateWorld.RunDummy();
+    }
+
+    void CastMagic()
+    {
+        magic.transform.position = magicStartPos.position;
+        magic.SetActive(true);
+        mRb.AddForce(this.transform.forward * 20000);
+
+        Invoke("KillMagic", 1.0f);
+    }
+
+    void KillMagic()
+    {
+        magic.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,7 +93,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * 200);
         }
 
-        else if (Input.GetKeyDown(KeyCode.M))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             anim.SetBool("isMagic", true);
         }
