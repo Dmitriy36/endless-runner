@@ -6,18 +6,15 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    private GameObject[] panels;
-    private GameObject[] mmButtons;
+    [SerializeField] private GameObject panelHelp;
+    [SerializeField] private GameObject panelOptions;
+    [SerializeField] private GameObject panelStats;
 
     private void Start()
     {
-        panels = GameObject.FindGameObjectsWithTag("SubPanel");
-        mmButtons = GameObject.FindGameObjectsWithTag("MMButton");
-
-        foreach(GameObject p in panels)
-        {
-            p.SetActive(false);
-        }
+        panelHelp.SetActive(false);
+        panelOptions.SetActive(false);
+        panelStats.SetActive(false);
     }
 
     private void Update()
@@ -28,44 +25,35 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    public void ClosePanel(Button button)
+    public void CloseHelpPanel()
     {
-        button.gameObject.transform.parent.gameObject.SetActive(false);
-        foreach (GameObject b in mmButtons)
-        {
-            b.SetActive(true);
-        }
+        panelHelp.SetActive(false);
     }
 
-    public void OpenPanel(Button button)
+    public void OpenHelpPanel()
     {
-        button.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-        foreach (GameObject b in mmButtons)
-        {
-            if(b != button.gameObject)
-            b.SetActive(false);
-        }
+        panelHelp.SetActive(true);
     }
 
-    //public void CloseOptionsPanel()
-    //{
-    //    optionsPanel.SetActive(false);
-    //}
+    public void CloseOptionsPanel()
+    {
+        panelOptions.SetActive(false);
+    }
 
-    //public void OpenOptionsPanel()
-    //{
-    //    optionsPanel.SetActive(true);
-    //}
+    public void OpenOptionsPanel()
+    {
+        panelOptions.SetActive(true);
+    }
 
-    //public void CloseStatisticsPanel()
-    //{
-    //    statisticsPanel.SetActive(false);
-    //}
+    public void CloseStatisticsPanel()
+    {
+        panelStats.SetActive(false);
+    }
 
-    //public void OpenStatisticsPanel()
-    //{
-    //    statisticsPanel.SetActive(true);
-    //}
+    public void OpenStatisticsPanel()
+    {
+        panelStats.SetActive(true);
+    }
 
     public void LoadGameScene()
     {
