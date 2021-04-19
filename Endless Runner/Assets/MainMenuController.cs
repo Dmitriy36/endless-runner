@@ -12,9 +12,14 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
-        panelHelp.SetActive(false);
-        panelOptions.SetActive(false);
-        panelStats.SetActive(false);
+        if(panelHelp != null)
+            panelHelp.SetActive(false);
+
+        if (panelHelp != null)
+            panelOptions.SetActive(false);
+
+        if (panelHelp != null)
+            panelStats.SetActive(false);
     }
 
     private void Update()
