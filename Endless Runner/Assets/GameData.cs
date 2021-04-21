@@ -7,11 +7,11 @@ using TMPro;
 public class GameData : MonoBehaviour
 {
     public static GameData singleton;
-    public TextMeshProUGUI scoreText = null;
+    public TMP_Text scoreText = null;
     [SerializeField] private int score = 0;
 
     private void Awake()
-    {
+    {        
         if(singleton == null)
         {
             singleton = this;

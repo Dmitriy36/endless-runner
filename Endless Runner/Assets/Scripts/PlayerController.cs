@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,12 +17,20 @@ public class PlayerController : MonoBehaviour
     public Transform magicStartPos;
     Rigidbody mRb;
 
+    int livesLeft;
+
+    private void RestartGame()
+    {
+        SceneManager.LoadScene("ScrollingWorld", LoadSceneMode.Single);
+    }
+
     private void OnCollisionEnter(Collision other)
     {     
         if(other.gameObject.tag == "Fire" || other.gameObject.tag == "Wall")
         {
             anim.SetTrigger("isDead");
             isDead = true;
+            Invoke("RestartGame", 1f);
         } else 
         currentPlatform = other.gameObject;
     }
@@ -36,6 +45,10 @@ public class PlayerController : MonoBehaviour
         startPosition = player.transform.position;
 
         GenerateWorld.RunDummy();
+
+        isDead = false;
+
+        livesLeft = PlayerPrefs.GetInt("Lives");
     }
 
     void CastMagic()

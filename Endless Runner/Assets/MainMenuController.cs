@@ -10,6 +10,8 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject panelOptions;
     [SerializeField] private GameObject panelStats;
 
+    int maxLives = 3;
+
     private void Start()
     {
         if(panelHelp != null)
@@ -62,6 +64,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGameScene()
     {
+        PlayerPrefs.SetInt("Lives", maxLives);
         SceneManager.LoadScene("ScrollingWorld", LoadSceneMode.Single);
     }
 

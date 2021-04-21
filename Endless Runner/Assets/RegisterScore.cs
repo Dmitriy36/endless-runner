@@ -8,10 +8,6 @@ public class RegisterScore : MonoBehaviour
 {
     private void Awake()
     {
-        //GameData.singleton.scoreText = GetComponent<TextMeshProUGUI>();
-        //Debug.Log(GameData.singleton.scoreText);
+        GameData.singleton.scoreText = GetComponent<TMP_Text>();
     }
-
-
-
 }
