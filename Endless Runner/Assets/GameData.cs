@@ -29,11 +29,14 @@ public class GameData : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+
+        PlayerPrefs.SetInt("Score", 0);
     }
 
     public void UpdateScore(int s)
     {
         score += s;
+        PlayerPrefs.SetInt("Score", score);
         if(scoreText != null)
         {
             scoreText.text = "Score: " + score;

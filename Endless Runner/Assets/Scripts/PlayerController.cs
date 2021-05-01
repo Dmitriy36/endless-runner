@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +20,12 @@ public class PlayerController : MonoBehaviour
     Rigidbody mRb;
 
     int livesLeft;
+    public Texture aliveIcon;
+    public Texture deadIcon;
+    public RawImage[] icons;
+
+    public GameObject gameOverPanel;
+    public TMP_Text highScore;
 
     private void RestartGame()
     {
@@ -26,17 +34,54 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {     
-        if(other.gameObject.tag == "Fire" || other.gameObject.tag == "Wall")
+        if(other.gameObject.tag == "Fire" || other.gameObject.tag == "Wall" && !isDead)
         {
             anim.SetTrigger("isDead");
             isDead = true;
-            Invoke("RestartGame", 1f);
+            livesLeft--;
+            PlayerPrefs.SetInt("Lives", livesLeft);
+
+            if(livesLeft > 0)
+            {
+                Invoke("RestartGame", 1f);
+            }
+            else
+            {
+                icons[0].texture = deadIcon;
+                gameOverPanel.SetActive(true);
+
+                PlayerPrefs.SetInt("LastScore", PlayerPrefs.GetInt("Score"));
+                if (PlayerPrefs.HasKey("HighScore"))
+                {
+                    int hs = PlayerPrefs.GetInt("HighScore");
+                    if (hs < PlayerPrefs.GetInt("Score"))
+                    {
+                        PlayerPrefs.SetInt("HighScore", PlayerPrefs.GetInt("Score"));
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("HighScore", PlayerPrefs.GetInt("Score"));
+                }
+
+            }
+            
         } else 
         currentPlatform = other.gameObject;
     }
 
     void Start()
     {
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highScore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
+        }
+        else
+        {
+            highScore.text = "High Score: 0";
+        }
+            
+
         anim = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
         mRb = magic.GetComponent<Rigidbody>();
@@ -49,6 +94,14 @@ public class PlayerController : MonoBehaviour
         isDead = false;
 
         livesLeft = PlayerPrefs.GetInt("Lives");
+
+        for (int i = 0; i < icons.Length; i++)
+        {
+            if(i >= livesLeft)
+            {
+                icons[i].texture = deadIcon;
+            }
+        }
     }
 
     void CastMagic()
