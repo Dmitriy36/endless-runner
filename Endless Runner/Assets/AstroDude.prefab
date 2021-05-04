@@ -413,6 +413,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36a65f8be7db7540b2c7d053bd954f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magic: {fileID: 0}
+  magicStartPos: {fileID: 0}
+  aliveIcon: {fileID: 0}
+  deadIcon: {fileID: 0}
+  icons: []
+  gameOverPanel: {fileID: 0}
+  highScore: {fileID: 0}
 --- !u!54 &1903213821
 Rigidbody:
   m_ObjectHideFlags: 0
