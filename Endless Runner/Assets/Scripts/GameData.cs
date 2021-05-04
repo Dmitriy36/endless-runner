@@ -10,6 +10,9 @@ public class GameData : MonoBehaviour
     public TMP_Text scoreText = null;
     [SerializeField] private int score = 0;
 
+    public GameObject musicSlider;
+    public GameObject soundSlider;
+
     private void Awake()
     {        
         if(singleton == null)
@@ -30,7 +33,13 @@ public class GameData : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
-        PlayerPrefs.SetInt("Score", 0);
+        //PlayerPrefs.SetInt("Score", 0);
+    }
+
+    private void Start()
+    {
+        musicSlider.GetComponent<UpdateMusic>().Start();
+        musicSlider.GetComponent<UpdateMusic>().Start();
     }
 
     public void UpdateScore(int s)

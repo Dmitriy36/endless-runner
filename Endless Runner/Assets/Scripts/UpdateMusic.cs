@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UpdateMusic : MonoBehaviour
 {
     List<AudioSource> music = new List<AudioSource>();
-    void Start()
+    public void Start()
     {
 
         AudioSource[] allAudioSources = GameObject.FindWithTag("GameData").GetComponentsInChildren<AudioSource>();

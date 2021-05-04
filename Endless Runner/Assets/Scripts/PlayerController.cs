@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     public static GameObject player;
     public static GameObject currentPlatform;
+    public static AudioSource[] sfx;
+
     bool canTurn = false;
     Vector3 startPosition;
     public static bool isDead = false;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {     
         if(other.gameObject.tag == "Fire" || other.gameObject.tag == "Wall" && !isDead)
         {
+            sfx[6].Play();
             anim.SetTrigger("isDead");
             isDead = true;
             livesLeft--;
@@ -86,6 +89,8 @@ public class PlayerController : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         mRb = magic.GetComponent<Rigidbody>();
 
+        sfx = GameObject.FindWithTag("GameData").GetComponentsInChildren<AudioSource>();
+
         player = this.gameObject;
         startPosition = player.transform.position;
 
@@ -106,6 +111,7 @@ public class PlayerController : MonoBehaviour
 
     void CastMagic()
     {
+        
         magic.transform.position = magicStartPos.position;
         magic.SetActive(true);
         mRb.AddForce(this.transform.forward * 80000);
@@ -113,9 +119,24 @@ public class PlayerController : MonoBehaviour
         Invoke("KillMagic", 1.0f);
     }
 
+    void PlayMagicSound()
+    {
+        sfx[7].Play();
+    }
+
     void KillMagic()
     {
         magic.SetActive(false);
+    }
+
+    void Footstep1()
+    {
+        sfx[3].Play();
+    }
+
+    void Footstep2()
+    {
+        sfx[4].Play();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -155,6 +176,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            PlayerController.sfx[2].Play();
             anim.SetBool("isJumping", true);
             rb.AddForce(Vector3.up * 200);
         }

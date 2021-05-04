@@ -42,6 +42,7 @@ public class DestroyWall : MonoBehaviour
     {
         if(other.gameObject.tag == "Spell")
         {
+            PlayerController.sfx[5].Play();
             GameObject obj = Instantiate(explosion, other.contacts[0].point, Quaternion.identity);
             Destroy(obj, 2.5f);
             col.enabled = false;
